@@ -1,7 +1,9 @@
 # golazy
 A Go module exporting functions I get tired of rewriting every time
 
-![golazy](https://github.com/edoardottt/images/blob/main/golazy/golazy.png)
+<p align="center">
+  <img src="https://github.com/edoardottt/images/blob/main/golazy/golazy.png"><br>
+</p>
 
 
 ```
