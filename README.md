@@ -5,6 +5,8 @@
 </p>
 
 
+----------
+
 ```
 go get github.com/edoardottt/golazy
 ```
