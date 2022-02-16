@@ -1,6 +1,8 @@
 # golazy
 A Go module exporting functions I get tired of rewriting every time
 
+![golazy](https://github.com/edoardottt/images/blob/main/golazy/golazy.png)
+
 
 ```
 go get github.com/edoardottt/golazy
