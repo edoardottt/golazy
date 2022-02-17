@@ -1,4 +1,4 @@
-package main
+package test
 
 import (
 	"fmt"
@@ -6,6 +6,6 @@ import (
 	golazy "github.com/edoardottt/golazy/pkg"
 )
 
-func main() {
+func test1() {
 	fmt.Println(golazy.RemoveDuplicateValues([]string{"golazy"}))
 }
