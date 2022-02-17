@@ -1,5 +1,3 @@
-UNDER DEVELOPMENT !
-
 <p align="center">
   <img src="https://github.com/edoardottt/images/blob/main/golazy/golazy.png"><br>
   <b align="center">🌴golazy🍸</b><br>
