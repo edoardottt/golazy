@@ -42,14 +42,31 @@ func RemoveDuplicateValues(strSlice []string) []string {
 	return list
 }
 
-//AppendOutputToTxt appends the output string in the file `filename`
+//AppendOutputToTxt tries to append the output string in the file `filename`
+//taken as input.
 func AppendOutputToTxt(output string, filename string) {
 	file, err := os.OpenFile(filename, os.O_APPEND|os.O_WRONLY, 0644)
 	if err != nil {
-		log.Println(err)
+		log.Fatal(err)
 	}
 	if _, err := file.WriteString(output + "\n"); err != nil {
 		log.Fatal(err)
+	}
+	file.Close()
+}
+
+//AppendOutputToTxtAndExit appends the output string in the file `filename`
+//taken as input.
+//---> If it encounters an error, it logs the error and exits !!!!
+func AppendOutputToTxtAndExit(output string, filename string) {
+	file, err := os.OpenFile(filename, os.O_APPEND|os.O_WRONLY, 0644)
+	if err != nil {
+		log.Fatal(err)
+		os.Exit(1)
+	}
+	if _, err := file.WriteString(output + "\n"); err != nil {
+		log.Fatal(err)
+		os.Exit(1)
 	}
 	file.Close()
 }
