@@ -1,4 +1,4 @@
-package version
+package golazy
 
 //Version for golazy
 func Version() string {

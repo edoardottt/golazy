@@ -1,5 +1,4 @@
-package string
-
+package golazy
 
 //RemoveDuplicateValues removes duplicates from a slice of strings
 func RemoveDuplicateValues(strSlice []string) []string {
