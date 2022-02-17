@@ -2,6 +2,7 @@ package golazy
 
 import (
 	"bufio"
+	"log"
 	"os"
 	"strings"
 )
@@ -39,4 +40,16 @@ func RemoveDuplicateValues(strSlice []string) []string {
 		}
 	}
 	return list
+}
+
+//AppendOutputToTxt appends the output string in the file `filename`
+func AppendOutputToTxt(output string, filename string) {
+	file, err := os.OpenFile(filename, os.O_APPEND|os.O_WRONLY, 0644)
+	if err != nil {
+		log.Println(err)
+	}
+	if _, err := file.WriteString(output + "\n"); err != nil {
+		log.Fatal(err)
+	}
+	file.Close()
 }
