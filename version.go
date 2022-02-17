@@ -1,6 +1,6 @@
 package version
 
-import "pkg/golazy"
+import "github.com/edoardottt/golazy/pkg/golazy"
 
 //Version for golazy
 func Version() string {
