@@ -6,6 +6,11 @@ import (
 	"strings"
 )
 
+//Version returns the version as string
+func Version() string {
+	return "0.1-dev"
+}
+
 //ScanTargets return the array of elements
 //taken as input on stdin.
 func ScanTargets() []string {
@@ -14,13 +19,16 @@ func ScanTargets() []string {
 	// accept domains on stdin
 	sc := bufio.NewScanner(os.Stdin)
 	for sc.Scan() {
-		domain := strings.ToLower(sc.Text())
-		result = append(result, domain)
+		if strings.TrimSpace(sc.Text()) != "" {
+			domain := strings.ToLower(sc.Text())
+			result = append(result, domain)
+		}
 	}
-	return RemoveDuplicateValues(result)
+	return result
 }
 
-//RemoveDuplicateValues >
+//RemoveDuplicateValues removes duplicates from a slice of
+//strings taken as input and returns the result
 func RemoveDuplicateValues(strSlice []string) []string {
 	keys := make(map[string]bool)
 	list := []string{}
