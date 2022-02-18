@@ -10,11 +10,13 @@
 ```
 go get github.com/edoardottt/golazy
 ```
+<br>
 
 | Name | Description | 
 | ----- | ------ |
 | [ScanTargets() []string](https://github.com/edoardottt/golazy/blob/main/golazy.go#L39) | ScanTargets return the array of elements taken as input on stdin. |
 
+<br>
 
 License 📝
 -------
