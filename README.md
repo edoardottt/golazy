@@ -15,6 +15,7 @@ go get github.com/edoardottt/golazy
 | Name | Description | 
 | ----- | ------ |
 | [ScanInputStdin() []string](https://github.com/edoardottt/golazy/blob/main/golazy.go#L39) | It returns the array of elements taken as input on stdin. |
+| [RemoveDuplicateStrings(strSlice []string) []string](https://github.com/edoardottt/golazy/blob/main/golazy.go#L55) | It removes duplicates from a slice of strings taken as input and returns the result | 
 
 <br>
 
