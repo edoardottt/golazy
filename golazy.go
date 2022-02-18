@@ -34,9 +34,9 @@ func Version() string {
 	return "0.1-dev"
 }
 
-//ScanTargets return the array of elements
+//ScanInputStdin return the array of elements
 //taken as input on stdin.
-func ScanTargets() []string {
+func ScanInputStdin() []string {
 
 	var result []string
 	// accept domains on stdin
