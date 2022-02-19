@@ -45,6 +45,25 @@ func TestRemoveDuplicateInts(t *testing.T) {
 	}
 }
 
+func TestRemoveDuplicateFloats(t *testing.T) {
+	var tests = []struct {
+		input    []float64
+		expected []float64
+	}{
+		{[]float64{}, []float64{}},
+		{[]float64{1, 2, 3}, []float64{1, 2, 3}},
+		{[]float64{1, 2, 3, 1, 2, 3, 1, 2, 3}, []float64{1, 2, 3}},
+		{[]float64{1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0}, []float64{1, 2, 3, 4, 5, 6, 7, 8, 9, 0}},
+	}
+
+	for _, test := range tests {
+		if output := RemoveDuplicateFloats(test.input); !EqFloatTest(test.expected, output) {
+			errorString := fmt.Sprintf("Test Failed: %f inputted, %v expected, received: %v", test.input, test.expected, output)
+			t.Error(errorString)
+		}
+	}
+}
+
 //EqStringTest : Test if two slices of strings are equal
 func EqStringTest(a, b []string) bool {
 
