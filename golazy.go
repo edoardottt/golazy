@@ -126,24 +126,24 @@ func AppendOutputToTxtAndExit(output string, filename string) {
 //tries to parse it as url, if it's a
 //well formatted url this function returns
 //the host (the domain if you prefer)
-func GetHost(input string) string {
+func GetHost(input string) (string, error) {
 	u, err := url.Parse(input)
 	if err != nil {
-		return ""
+		return "", err
 	}
-	return u.Host
+	return u.Host, nil
 }
 
 //GetProtocol takes as input a string and
 //tries to parse it as url, if it's a
 //well formatted url this function returns
 //the protocol (the scheme if you prefer)
-func GetProtocol(input string) string {
+func GetProtocol(input string) (string, error) {
 	u, err := url.Parse(input)
 	if err != nil {
-		return ""
+		return "", err
 	}
-	return u.Scheme
+	return u.Scheme, nil
 }
 
 //HasProtocol takes as input a string and

@@ -64,6 +64,27 @@ func TestRemoveDuplicateFloats(t *testing.T) {
 	}
 }
 
+func TestGetHost(t *testing.T) {
+	var tests = []struct {
+		input    string
+		expected string
+	}{
+		{"", ""},
+		{"http://ciao.com", "ciao.com"},
+		{"https://google.com", "google.com"},
+		{"http:google.com", ""},
+		{"http//google.com", ""},
+		{"//google.com", "google.com"},
+	}
+
+	for _, test := range tests {
+		if output, _ := GetHost(test.input); test.expected != output {
+			errorString := fmt.Sprintf("Test Failed: %s inputted, %v expected, received: %v", test.input, test.expected, output)
+			t.Error(errorString)
+		}
+	}
+}
+
 //EqStringTest : Test if two slices of strings are equal
 func EqStringTest(a, b []string) bool {
 
