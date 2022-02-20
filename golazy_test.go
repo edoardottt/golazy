@@ -189,6 +189,27 @@ func TestSameDomain(t *testing.T) {
 	}
 }
 
+func TestGetPath(t *testing.T) {
+	var tests = []struct {
+		input    string
+		expected string
+	}{
+		{"", ""},
+		{"https://subdomain.google.com", ""},
+		{"https://subdomain.google.com:443/ciao", "/ciao"},
+		{"https://subdomain.google.com:443/ciao/", "/ciao/"},
+		{"https://subdomain.google.com:443/ciao/#", "/ciao/"},
+		{"https://subdomain.google.com:443/ciao/?q=1", "/ciao/"},
+	}
+
+	for _, test := range tests {
+		if output, _ := GetPath(test.input); test.expected != output {
+			errorString := fmt.Sprintf("Test Failed: %s inputted, %v expected, received: %v", test.input, test.expected, output)
+			t.Error(errorString)
+		}
+	}
+}
+
 //EqStringTest : Test if two slices of strings are equal
 func EqStringTest(a, b []string) bool {
 
