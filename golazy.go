@@ -25,6 +25,7 @@ package golazy
 import (
 	"bufio"
 	"log"
+	"net/url"
 	"os"
 	"strings"
 )
@@ -119,4 +120,57 @@ func AppendOutputToTxtAndExit(output string, filename string) {
 		os.Exit(1)
 	}
 	file.Close()
+}
+
+//GetHost takes as input a string and
+//tries to parse it as url, if it's a
+//well formatted url this function returns
+//the host (the domain if you prefer)
+func GetHost(input string) string {
+	u, err := url.Parse(input)
+	if err != nil {
+		return ""
+	}
+	return u.Host
+}
+
+//GetProtocol takes as input a string and
+//tries to parse it as url, if it's a
+//well formatted url this function returns
+//the protocol (the scheme if you prefer)
+func GetProtocol(input string) string {
+	u, err := url.Parse(input)
+	if err != nil {
+		return ""
+	}
+	return u.Scheme
+}
+
+//HasProtocol takes as input a string and
+//checks if it has a protocol ( like in a
+//URI/URL)
+func HasProtocol(input string) bool {
+	res := strings.Index(input, "://")
+	return res >= 0
+}
+
+//RemoveProtocol removes the protocol from
+//the input string (something://...)
+//If it's not present it returns the input
+func RemoveProtocol(input string) string {
+	res := strings.Index(input, "://")
+	if res >= 0 {
+		return input[res+3:]
+	}
+	return input
+}
+
+//RemovePort removes port from the input string
+//If it's not present it returns the input
+func RemovePort(input string) string {
+	res := strings.Index(input, ":")
+	if res >= 0 {
+		return input[:res-1]
+	}
+	return input
 }
