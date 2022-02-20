@@ -167,6 +167,28 @@ func TestRemovePort(t *testing.T) {
 	}
 }
 
+func TestSameDomain(t *testing.T) {
+	var tests = []struct {
+		input1   string
+		input2   string
+		expected bool
+	}{
+		{"", "", false},
+		{"http://subdomain.google.com", "http://subdomain.google.com", true},
+		{"http://subdomain.google.com", "https://subdomain.google.com", true},
+		{"http://subdomain.googla.com", "https://subdomain.google.com", false},
+		{"http://subdomain.google.com:80", "https://subdomain.google.com", false},
+		{"http://subdomain.google.com.com", "https://subdomain.google.com", false},
+	}
+
+	for _, test := range tests {
+		if output := SameDomain(test.input1, test.input2); test.expected != output {
+			errorString := fmt.Sprintf("Test Failed: %s and %s inputted, %v expected, received: %v", test.input1, test.input2, test.expected, output)
+			t.Error(errorString)
+		}
+	}
+}
+
 //EqStringTest : Test if two slices of strings are equal
 func EqStringTest(a, b []string) bool {
 
