@@ -85,6 +85,27 @@ func TestGetHost(t *testing.T) {
 	}
 }
 
+func TestGetProtocol(t *testing.T) {
+	var tests = []struct {
+		input    string
+		expected string
+	}{
+		{"", ""},
+		{"http://ciao.com", "http"},
+		{"https://google.com", "https"},
+		{"http:google.com", "http"},
+		{"http//google.com", ""},
+		{"//google.com", ""},
+	}
+
+	for _, test := range tests {
+		if output, _ := GetProtocol(test.input); test.expected != output {
+			errorString := fmt.Sprintf("Test Failed: %s inputted, %v expected, received: %v", test.input, test.expected, output)
+			t.Error(errorString)
+		}
+	}
+}
+
 //EqStringTest : Test if two slices of strings are equal
 func EqStringTest(a, b []string) bool {
 
