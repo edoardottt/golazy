@@ -127,6 +127,28 @@ func TestHasProtocol(t *testing.T) {
 	}
 }
 
+func TestRemoveProtocol(t *testing.T) {
+	var tests = []struct {
+		input    string
+		expected string
+	}{
+		{"", ""},
+		{"http://ciao.com/ciao/?ciao=1", "ciao.com/ciao/?ciao=1"},
+		{"https://google.com/#heyyyyyy", "google.com/#heyyyyyy"},
+		{"http:google.com", "http:google.com"},
+		{"http//google.com", "http//google.com"},
+		{"//google.com", "//google.com"},
+		{"https://subdomain.domain.tld/path1/path2?ciao=paramvalue4", "subdomain.domain.tld/path1/path2?ciao=paramvalue4"},
+	}
+
+	for _, test := range tests {
+		if output := RemoveProtocol(test.input); test.expected != output {
+			errorString := fmt.Sprintf("Test Failed: %s inputted, %v expected, received: %v", test.input, test.expected, output)
+			t.Error(errorString)
+		}
+	}
+}
+
 //EqStringTest : Test if two slices of strings are equal
 func EqStringTest(a, b []string) bool {
 
