@@ -174,3 +174,29 @@ func RemovePort(input string) string {
 	}
 	return input
 }
+
+//SameDomain checks if two urls have the same domain
+func SameDomain(url1 string, url2 string) bool {
+	u1, err := url.Parse(url1)
+	if err != nil {
+		return false
+	}
+	u2, err := url.Parse(url2)
+	if err != nil {
+		return false
+	}
+	if u1.Host == "" || u2.Host == "" {
+		return false
+	}
+	return u1.Host == u2.Host
+}
+
+//GetPath returns the path of the input string
+//(if correctly URL-formatted)
+func GetPath(input string) (string, error) {
+	u, err := url.Parse(input)
+	if err != nil {
+		return "", err
+	}
+	return u.Path, nil
+}
