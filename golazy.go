@@ -170,7 +170,7 @@ func RemoveProtocol(input string) string {
 func RemovePort(input string) string {
 	res := strings.Index(input, ":")
 	if res >= 0 {
-		return input[:res-1]
+		return input[:res]
 	}
 	return input
 }

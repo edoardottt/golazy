@@ -149,6 +149,24 @@ func TestRemoveProtocol(t *testing.T) {
 	}
 }
 
+func TestRemovePort(t *testing.T) {
+	var tests = []struct {
+		input    string
+		expected string
+	}{
+		{"", ""},
+		{"subdomain.google.com", "subdomain.google.com"},
+		{"subdomain.google.com:443", "subdomain.google.com"},
+	}
+
+	for _, test := range tests {
+		if output := RemovePort(test.input); test.expected != output {
+			errorString := fmt.Sprintf("Test Failed: %s inputted, %v expected, received: %v", test.input, test.expected, output)
+			t.Error(errorString)
+		}
+	}
+}
+
 //EqStringTest : Test if two slices of strings are equal
 func EqStringTest(a, b []string) bool {
 
