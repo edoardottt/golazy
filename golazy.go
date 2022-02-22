@@ -200,3 +200,24 @@ func GetPath(input string) (string, error) {
 	}
 	return u.Path, nil
 }
+
+//ReadFileLineByLine read from a file taken as input
+//and returns a slice of strings (duplicates allowed).
+func ReadFileLineByLine(inputFile string) []string {
+	file, err := os.Open(inputFile)
+	if err != nil {
+		log.Fatalf("failed to open %s ", inputFile)
+	}
+	scanner := bufio.NewScanner(file)
+	scanner.Split(bufio.ScanLines)
+	var text []string
+	var dir = ""
+	for scanner.Scan() {
+		dir = scanner.Text()
+		if len(dir) > 0 {
+			text = append(text, dir)
+		}
+	}
+	file.Close()
+	return text
+}
