@@ -201,7 +201,7 @@ func GetPath(input string) (string, error) {
 	return u.Path, nil
 }
 
-//ReadFileLineByLine read from a file taken as input
+//ReadFileLineByLine reads from a file taken as input
 //and returns a slice of strings (duplicates allowed).
 func ReadFileLineByLine(inputFile string) []string {
 	file, err := os.Open(inputFile)
