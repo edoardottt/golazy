@@ -211,9 +211,8 @@ func ReadFileLineByLine(inputFile string) []string {
 	scanner := bufio.NewScanner(file)
 	scanner.Split(bufio.ScanLines)
 	var text []string
-	var dir = ""
 	for scanner.Scan() {
-		dir = scanner.Text()
+		dir := scanner.Text()
 		if len(dir) > 0 {
 			text = append(text, dir)
 		}
