@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://github.com/edoardottt/images/blob/main/golazy/golazy.png"><br>
   <b align="center">🌴golazy🍸</b><br>
-  <p align="center">A Go module exporting general purpose functions I get tired of rewriting every time</p>
+  <p align="center">Golang module exporting general purpose functions I get tired of rewriting every time</p>
 </p>
 <p align="center">
 <a href="https://pkg.go.dev/github.com/edoardottt/golazy"><img src="https://pkg.go.dev/badge/github.com/edoardottt/golazy.svg" alt="Go Reference"></a>
