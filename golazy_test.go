@@ -34,13 +34,18 @@ func TestRemoveDuplicateStrings(t *testing.T) {
 		{[]string{"1", "2", "3"}, []string{"1", "2", "3"}},
 		{[]string{"1", "2", "3", "1", "2", "3", "1", "2", "3"}, []string{"1", "2", "3"}},
 		{[]string{"a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a"}, []string{"a"}},
-		{[]string{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"},
-			[]string{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"}},
+		{[]string{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
+			"N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
+			"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
+			"N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"},
+			[]string{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
+				"N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"}},
 	}
 
 	for _, test := range tests {
 		if output := golazy.RemoveDuplicateStrings(test.input); !EqStringTest(test.expected, output) {
-			errorString := fmt.Sprintf("Test Failed: %s inputted, %v expected, received: %v", test.input, test.expected, output)
+			errorString := fmt.Sprintf("Test Failed: %s inputted, %v expected, received: %v",
+				test.input, test.expected, output)
 			t.Error(errorString)
 		}
 	}
@@ -59,7 +64,8 @@ func TestRemoveDuplicateInts(t *testing.T) {
 
 	for _, test := range tests {
 		if output := golazy.RemoveDuplicateInts(test.input); !EqIntTest(test.expected, output) {
-			errorString := fmt.Sprintf("Test Failed: %d inputted, %v expected, received: %v", test.input, test.expected, output)
+			errorString := fmt.Sprintf("Test Failed: %d inputted, %v expected, received: %v",
+				test.input, test.expected, output)
 			t.Error(errorString)
 		}
 	}
@@ -78,7 +84,8 @@ func TestRemoveDuplicateFloats(t *testing.T) {
 
 	for _, test := range tests {
 		if output := golazy.RemoveDuplicateFloats(test.input); !EqFloatTest(test.expected, output) {
-			errorString := fmt.Sprintf("Test Failed: %f inputted, %v expected, received: %v", test.input, test.expected, output)
+			errorString := fmt.Sprintf("Test Failed: %f inputted, %v expected, received: %v",
+				test.input, test.expected, output)
 			t.Error(errorString)
 		}
 	}
@@ -99,7 +106,8 @@ func TestGetHost(t *testing.T) {
 
 	for _, test := range tests {
 		if output, _ := golazy.GetHost(test.input); test.expected != output {
-			errorString := fmt.Sprintf("Test Failed: %s inputted, %v expected, received: %v", test.input, test.expected, output)
+			errorString := fmt.Sprintf("Test Failed: %s inputted, %v expected, received: %v",
+				test.input, test.expected, output)
 			t.Error(errorString)
 		}
 	}
@@ -120,7 +128,8 @@ func TestGetProtocol(t *testing.T) {
 
 	for _, test := range tests {
 		if output, _ := golazy.GetProtocol(test.input); test.expected != output {
-			errorString := fmt.Sprintf("Test Failed: %s inputted, %v expected, received: %v", test.input, test.expected, output)
+			errorString := fmt.Sprintf("Test Failed: %s inputted, %v expected, received: %v",
+				test.input, test.expected, output)
 			t.Error(errorString)
 		}
 	}
@@ -141,7 +150,8 @@ func TestHasProtocol(t *testing.T) {
 
 	for _, test := range tests {
 		if output := golazy.HasProtocol(test.input); test.expected != output {
-			errorString := fmt.Sprintf("Test Failed: %s inputted, %v expected, received: %v", test.input, test.expected, output)
+			errorString := fmt.Sprintf("Test Failed: %s inputted, %v expected, received: %v",
+				test.input, test.expected, output)
 			t.Error(errorString)
 		}
 	}
@@ -163,7 +173,8 @@ func TestRemoveProtocol(t *testing.T) {
 
 	for _, test := range tests {
 		if output := golazy.RemoveProtocol(test.input); test.expected != output {
-			errorString := fmt.Sprintf("Test Failed: %s inputted, %v expected, received: %v", test.input, test.expected, output)
+			errorString := fmt.Sprintf("Test Failed: %s inputted, %v expected, received: %v",
+				test.input, test.expected, output)
 			t.Error(errorString)
 		}
 	}
@@ -181,7 +192,8 @@ func TestRemovePort(t *testing.T) {
 
 	for _, test := range tests {
 		if output := golazy.RemovePort(test.input); test.expected != output {
-			errorString := fmt.Sprintf("Test Failed: %s inputted, %v expected, received: %v", test.input, test.expected, output)
+			errorString := fmt.Sprintf("Test Failed: %s inputted, %v expected, received: %v",
+				test.input, test.expected, output)
 			t.Error(errorString)
 		}
 	}
@@ -203,7 +215,8 @@ func TestSameDomain(t *testing.T) {
 
 	for _, test := range tests {
 		if output := golazy.SameDomain(test.input1, test.input2); test.expected != output {
-			errorString := fmt.Sprintf("Test Failed: %s and %s inputted, %v expected, received: %v", test.input1, test.input2, test.expected, output)
+			errorString := fmt.Sprintf("Test Failed: %s and %s inputted, %v expected, received: %v",
+				test.input1, test.input2, test.expected, output)
 			t.Error(errorString)
 		}
 	}
@@ -224,7 +237,8 @@ func TestGetPath(t *testing.T) {
 
 	for _, test := range tests {
 		if output, _ := golazy.GetPath(test.input); test.expected != output {
-			errorString := fmt.Sprintf("Test Failed: %s inputted, %v expected, received: %v", test.input, test.expected, output)
+			errorString := fmt.Sprintf("Test Failed: %s inputted, %v expected, received: %v",
+				test.input, test.expected, output)
 			t.Error(errorString)
 		}
 	}
