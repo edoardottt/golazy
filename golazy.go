@@ -30,13 +30,13 @@ import (
 	"strings"
 )
 
-//Version returns the version as string
+// Version returns the version as string
 func Version() string {
 	return "0.1-dev"
 }
 
-//ScanInputStdin return the array of elements
-//taken as input on stdin.
+// ScanInputStdin return the array of elements
+// taken as input on stdin.
 func ScanInputStdin() []string {
 
 	var result []string
@@ -51,8 +51,8 @@ func ScanInputStdin() []string {
 	return result
 }
 
-//RemoveDuplicateStrings removes duplicates from a slice of
-//strings taken as input and returns the result
+// RemoveDuplicateStrings removes duplicates from a slice of
+// strings taken as input and returns the result
 func RemoveDuplicateStrings(strSlice []string) []string {
 	keys := make(map[string]bool)
 	list := []string{}
@@ -65,8 +65,8 @@ func RemoveDuplicateStrings(strSlice []string) []string {
 	return list
 }
 
-//RemoveDuplicateInts removes duplicates from a slice of
-//integers taken as input and returns the result
+// RemoveDuplicateInts removes duplicates from a slice of
+// integers taken as input and returns the result
 func RemoveDuplicateInts(intSlice []int) []int {
 	keys := make(map[int]bool)
 	list := []int{}
@@ -79,8 +79,8 @@ func RemoveDuplicateInts(intSlice []int) []int {
 	return list
 }
 
-//RemoveDuplicateFloats removes duplicates from a slice of
-//floats taken as input and returns the result
+// RemoveDuplicateFloats removes duplicates from a slice of
+// floats taken as input and returns the result
 func RemoveDuplicateFloats(floatSlice []float64) []float64 {
 	keys := make(map[float64]bool)
 	list := []float64{}
@@ -93,8 +93,8 @@ func RemoveDuplicateFloats(floatSlice []float64) []float64 {
 	return list
 }
 
-//AppendOutputToTxt tries to append the output string in the file `filename`
-//taken as input.
+// AppendOutputToTxt tries to append the output string in the file `filename`
+// taken as input.
 func AppendOutputToTxt(output string, filename string) {
 	file, err := os.OpenFile(filename, os.O_APPEND|os.O_WRONLY, 0644)
 	if err != nil {
@@ -106,9 +106,9 @@ func AppendOutputToTxt(output string, filename string) {
 	file.Close()
 }
 
-//AppendOutputToTxtAndExit appends the output string in the file `filename`
-//taken as input.
-//---> If it encounters an error, it logs the error and exits !!!!
+// AppendOutputToTxtAndExit appends the output string in the file `filename`
+// taken as input.
+// ---> If it encounters an error, it logs the error and exits !!!!
 func AppendOutputToTxtAndExit(output string, filename string) {
 	file, err := os.OpenFile(filename, os.O_APPEND|os.O_WRONLY, 0644)
 	if err != nil {
@@ -122,10 +122,10 @@ func AppendOutputToTxtAndExit(output string, filename string) {
 	file.Close()
 }
 
-//GetHost takes as input a string and
-//tries to parse it as url, if it's a
-//well formatted url this function returns
-//the host (the domain if you prefer)
+// GetHost takes as input a string and
+// tries to parse it as url, if it's a
+// well formatted url this function returns
+// the host (the domain if you prefer)
 func GetHost(input string) (string, error) {
 	u, err := url.Parse(input)
 	if err != nil {
@@ -134,10 +134,10 @@ func GetHost(input string) (string, error) {
 	return u.Host, nil
 }
 
-//GetProtocol takes as input a string and
-//tries to parse it as url, if it's a
-//well formatted url this function returns
-//the protocol (the scheme if you prefer)
+// GetProtocol takes as input a string and
+// tries to parse it as url, if it's a
+// well formatted url this function returns
+// the protocol (the scheme if you prefer)
 func GetProtocol(input string) (string, error) {
 	u, err := url.Parse(input)
 	if err != nil {
@@ -146,17 +146,17 @@ func GetProtocol(input string) (string, error) {
 	return u.Scheme, nil
 }
 
-//HasProtocol takes as input a string and
-//checks if it has a protocol ( like in a
-//URI/URL)
+// HasProtocol takes as input a string and
+// checks if it has a protocol ( like in a
+// URI/URL)
 func HasProtocol(input string) bool {
 	res := strings.Index(input, "://")
 	return res >= 0
 }
 
-//RemoveProtocol removes the protocol from
-//the input string (something://...)
-//If it's not present it returns the input
+// RemoveProtocol removes the protocol from
+// the input string (something://...)
+// If it's not present it returns the input
 func RemoveProtocol(input string) string {
 	res := strings.Index(input, "://")
 	if res >= 0 {
@@ -165,8 +165,8 @@ func RemoveProtocol(input string) string {
 	return input
 }
 
-//RemovePort removes port from the input string
-//If it's not present it returns the input
+// RemovePort removes port from the input string
+// If it's not present it returns the input
 func RemovePort(input string) string {
 	res := strings.Index(input, ":")
 	if res >= 0 {
@@ -175,7 +175,7 @@ func RemovePort(input string) string {
 	return input
 }
 
-//SameDomain checks if two urls have the same domain
+// SameDomain checks if two urls have the same domain
 func SameDomain(url1 string, url2 string) bool {
 	u1, err := url.Parse(url1)
 	if err != nil {
@@ -191,8 +191,8 @@ func SameDomain(url1 string, url2 string) bool {
 	return u1.Host == u2.Host
 }
 
-//GetPath returns the path of the input string
-//(if correctly URL-formatted)
+// GetPath returns the path of the input string
+// (if correctly URL-formatted)
 func GetPath(input string) (string, error) {
 	u, err := url.Parse(input)
 	if err != nil {
@@ -201,8 +201,8 @@ func GetPath(input string) (string, error) {
 	return u.Path, nil
 }
 
-//ReadFileLineByLine reads from a file taken as input
-//and returns a slice of strings (duplicates allowed).
+// ReadFileLineByLine reads from a file taken as input
+// and returns a slice of strings (duplicates allowed).
 func ReadFileLineByLine(inputFile string) []string {
 	file, err := os.Open(inputFile)
 	if err != nil {
