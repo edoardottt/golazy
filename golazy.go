@@ -30,7 +30,7 @@ import (
 	"strings"
 )
 
-// Version returns the version as string
+// Version returns the version as string.
 func Version() string {
 	return "0.1-dev"
 }
@@ -52,7 +52,7 @@ func ScanInputStdin() []string {
 }
 
 // RemoveDuplicateStrings removes duplicates from a slice of
-// strings taken as input and returns the result
+// strings taken as input and returns the result.
 func RemoveDuplicateStrings(strSlice []string) []string {
 	keys := make(map[string]bool)
 	list := []string{}
@@ -66,7 +66,7 @@ func RemoveDuplicateStrings(strSlice []string) []string {
 }
 
 // RemoveDuplicateInts removes duplicates from a slice of
-// integers taken as input and returns the result
+// integers taken as input and returns the result.
 func RemoveDuplicateInts(intSlice []int) []int {
 	keys := make(map[int]bool)
 	list := []int{}
@@ -80,7 +80,7 @@ func RemoveDuplicateInts(intSlice []int) []int {
 }
 
 // RemoveDuplicateFloats removes duplicates from a slice of
-// floats taken as input and returns the result
+// floats taken as input and returns the result.
 func RemoveDuplicateFloats(floatSlice []float64) []float64 {
 	keys := make(map[float64]bool)
 	list := []float64{}
@@ -125,7 +125,7 @@ func AppendOutputToTxtAndExit(output string, filename string) {
 // GetHost takes as input a string and
 // tries to parse it as url, if it's a
 // well formatted url this function returns
-// the host (the domain if you prefer)
+// the host (the domain if you prefer).
 func GetHost(input string) (string, error) {
 	u, err := url.Parse(input)
 	if err != nil {
@@ -137,7 +137,7 @@ func GetHost(input string) (string, error) {
 // GetProtocol takes as input a string and
 // tries to parse it as url, if it's a
 // well formatted url this function returns
-// the protocol (the scheme if you prefer)
+// the protocol (the scheme if you prefer).
 func GetProtocol(input string) (string, error) {
 	u, err := url.Parse(input)
 	if err != nil {
@@ -148,7 +148,7 @@ func GetProtocol(input string) (string, error) {
 
 // HasProtocol takes as input a string and
 // checks if it has a protocol ( like in a
-// URI/URL)
+// URI/URL).
 func HasProtocol(input string) bool {
 	res := strings.Index(input, "://")
 	return res >= 0
@@ -156,7 +156,7 @@ func HasProtocol(input string) bool {
 
 // RemoveProtocol removes the protocol from
 // the input string (something://...)
-// If it's not present it returns the input
+// If it's not present it returns the input.
 func RemoveProtocol(input string) string {
 	res := strings.Index(input, "://")
 	if res >= 0 {
@@ -166,7 +166,7 @@ func RemoveProtocol(input string) string {
 }
 
 // RemovePort removes port from the input string
-// If it's not present it returns the input
+// If it's not present it returns the input.
 func RemovePort(input string) string {
 	res := strings.Index(input, ":")
 	if res >= 0 {
@@ -175,7 +175,7 @@ func RemovePort(input string) string {
 	return input
 }
 
-// SameDomain checks if two urls have the same domain
+// SameDomain checks if two urls have the same domain.
 func SameDomain(url1 string, url2 string) bool {
 	u1, err := url.Parse(url1)
 	if err != nil {
@@ -192,7 +192,7 @@ func SameDomain(url1 string, url2 string) bool {
 }
 
 // GetPath returns the path of the input string
-// (if correctly URL-formatted)
+// (if correctly URL-formatted).
 func GetPath(input string) (string, error) {
 	u, err := url.Parse(input)
 	if err != nil {
