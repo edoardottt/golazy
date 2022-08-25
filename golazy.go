@@ -38,7 +38,6 @@ func Version() string {
 // ScanInputStdin return the array of elements
 // taken as input on stdin.
 func ScanInputStdin() []string {
-
 	var result []string
 	// accept domains on stdin
 	sc := bufio.NewScanner(os.Stdin)

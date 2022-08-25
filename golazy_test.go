@@ -230,7 +230,6 @@ func TestGetPath(t *testing.T) {
 
 // EqStringTest : Test if two slices of strings are equal.
 func EqStringTest(a, b []string) bool {
-
 	// If one is nil, the other must also be nil.
 	if (a == nil) != (b == nil) {
 		return false
@@ -251,7 +250,6 @@ func EqStringTest(a, b []string) bool {
 
 // EqIntTest : Test if two slices of ints are equal.
 func EqIntTest(a, b []int) bool {
-
 	// If one is nil, the other must also be nil.
 	if (a == nil) != (b == nil) {
 		return false
@@ -272,7 +270,6 @@ func EqIntTest(a, b []int) bool {
 
 // EqFloatTest : Test if two slices of floats are equal.
 func EqFloatTest(a, b []float64) bool {
-
 	// If one is nil, the other must also be nil.
 	if (a == nil) != (b == nil) {
 		return false
