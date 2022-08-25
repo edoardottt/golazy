@@ -16,11 +16,13 @@ along with this program.  If not, see http://www.gnu.org/licenses/.
 	@Author:      edoardottt, https://www.edoardoottavianelli.it
 */
 
-package golazy
+package golazy_test
 
 import (
 	"fmt"
 	"testing"
+
+	"github.com/edoardottt/golazy"
 )
 
 func TestRemoveDuplicateStrings(t *testing.T) {
@@ -37,7 +39,7 @@ func TestRemoveDuplicateStrings(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		if output := RemoveDuplicateStrings(test.input); !EqStringTest(test.expected, output) {
+		if output := golazy.RemoveDuplicateStrings(test.input); !EqStringTest(test.expected, output) {
 			errorString := fmt.Sprintf("Test Failed: %s inputted, %v expected, received: %v", test.input, test.expected, output)
 			t.Error(errorString)
 		}
@@ -56,7 +58,7 @@ func TestRemoveDuplicateInts(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		if output := RemoveDuplicateInts(test.input); !EqIntTest(test.expected, output) {
+		if output := golazy.RemoveDuplicateInts(test.input); !EqIntTest(test.expected, output) {
 			errorString := fmt.Sprintf("Test Failed: %d inputted, %v expected, received: %v", test.input, test.expected, output)
 			t.Error(errorString)
 		}
@@ -75,7 +77,7 @@ func TestRemoveDuplicateFloats(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		if output := RemoveDuplicateFloats(test.input); !EqFloatTest(test.expected, output) {
+		if output := golazy.RemoveDuplicateFloats(test.input); !EqFloatTest(test.expected, output) {
 			errorString := fmt.Sprintf("Test Failed: %f inputted, %v expected, received: %v", test.input, test.expected, output)
 			t.Error(errorString)
 		}
@@ -96,7 +98,7 @@ func TestGetHost(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		if output, _ := GetHost(test.input); test.expected != output {
+		if output, _ := golazy.GetHost(test.input); test.expected != output {
 			errorString := fmt.Sprintf("Test Failed: %s inputted, %v expected, received: %v", test.input, test.expected, output)
 			t.Error(errorString)
 		}
@@ -117,7 +119,7 @@ func TestGetProtocol(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		if output, _ := GetProtocol(test.input); test.expected != output {
+		if output, _ := golazy.GetProtocol(test.input); test.expected != output {
 			errorString := fmt.Sprintf("Test Failed: %s inputted, %v expected, received: %v", test.input, test.expected, output)
 			t.Error(errorString)
 		}
@@ -138,7 +140,7 @@ func TestHasProtocol(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		if output := HasProtocol(test.input); test.expected != output {
+		if output := golazy.HasProtocol(test.input); test.expected != output {
 			errorString := fmt.Sprintf("Test Failed: %s inputted, %v expected, received: %v", test.input, test.expected, output)
 			t.Error(errorString)
 		}
@@ -160,7 +162,7 @@ func TestRemoveProtocol(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		if output := RemoveProtocol(test.input); test.expected != output {
+		if output := golazy.RemoveProtocol(test.input); test.expected != output {
 			errorString := fmt.Sprintf("Test Failed: %s inputted, %v expected, received: %v", test.input, test.expected, output)
 			t.Error(errorString)
 		}
@@ -178,7 +180,7 @@ func TestRemovePort(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		if output := RemovePort(test.input); test.expected != output {
+		if output := golazy.RemovePort(test.input); test.expected != output {
 			errorString := fmt.Sprintf("Test Failed: %s inputted, %v expected, received: %v", test.input, test.expected, output)
 			t.Error(errorString)
 		}
@@ -200,7 +202,7 @@ func TestSameDomain(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		if output := SameDomain(test.input1, test.input2); test.expected != output {
+		if output := golazy.SameDomain(test.input1, test.input2); test.expected != output {
 			errorString := fmt.Sprintf("Test Failed: %s and %s inputted, %v expected, received: %v", test.input1, test.input2, test.expected, output)
 			t.Error(errorString)
 		}
@@ -221,7 +223,7 @@ func TestGetPath(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		if output, _ := GetPath(test.input); test.expected != output {
+		if output, _ := golazy.GetPath(test.input); test.expected != output {
 			errorString := fmt.Sprintf("Test Failed: %s inputted, %v expected, received: %v", test.input, test.expected, output)
 			t.Error(errorString)
 		}
