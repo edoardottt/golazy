@@ -47,6 +47,7 @@ func ScanInputStdin() []string {
 			result = append(result, domain)
 		}
 	}
+
 	return result
 }
 
@@ -75,6 +76,7 @@ func RemoveDuplicateInts(intSlice []int) []int {
 			list = append(list, entry)
 		}
 	}
+
 	return list
 }
 
@@ -89,6 +91,7 @@ func RemoveDuplicateFloats(floatSlice []float64) []float64 {
 			list = append(list, entry)
 		}
 	}
+
 	return list
 }
 
@@ -130,6 +133,7 @@ func GetHost(input string) (string, error) {
 	if err != nil {
 		return "", err
 	}
+
 	return u.Host, nil
 }
 
@@ -142,6 +146,7 @@ func GetProtocol(input string) (string, error) {
 	if err != nil {
 		return "", err
 	}
+
 	return u.Scheme, nil
 }
 
@@ -150,6 +155,7 @@ func GetProtocol(input string) (string, error) {
 // URI/URL).
 func HasProtocol(input string) bool {
 	res := strings.Index(input, "://")
+
 	return res >= 0
 }
 
@@ -203,13 +209,13 @@ func GetPath(input string) (string, error) {
 // ReadFileLineByLine reads from a file taken as input
 // and returns a slice of strings (duplicates allowed).
 func ReadFileLineByLine(inputFile string) []string {
+	var text []string
 	file, err := os.Open(inputFile)
 	if err != nil {
 		log.Fatalf("failed to open %s ", inputFile)
 	}
 	scanner := bufio.NewScanner(file)
 	scanner.Split(bufio.ScanLines)
-	var text []string
 	for scanner.Scan() {
 		dir := scanner.Text()
 		if len(dir) > 0 {
