@@ -245,18 +245,18 @@ func TestGetPath(t *testing.T) {
 }
 
 // EqStringTest : Test if two slices of strings are equal.
-func EqStringTest(a, b []string) bool {
+func EqStringTest(input1, input2 []string) bool {
 	// If one is nil, the other must also be nil.
-	if (a == nil) != (b == nil) {
+	if (input1 == nil) != (input2 == nil) {
 		return false
 	}
 
-	if len(a) != len(b) {
+	if len(input1) != len(input2) {
 		return false
 	}
 
-	for i := range a {
-		if a[i] != b[i] {
+	for i := range input1 {
+		if input1[i] != input2[i] {
 			return false
 		}
 	}
@@ -265,18 +265,18 @@ func EqStringTest(a, b []string) bool {
 }
 
 // EqIntTest : Test if two slices of ints are equal.
-func EqIntTest(a, b []int) bool {
+func EqIntTest(input1, input2 []int) bool {
 	// If one is nil, the other must also be nil.
-	if (a == nil) != (b == nil) {
+	if (input1 == nil) != (input2 == nil) {
 		return false
 	}
 
-	if len(a) != len(b) {
+	if len(input1) != len(input2) {
 		return false
 	}
 
-	for i := range a {
-		if a[i] != b[i] {
+	for i := range input1 {
+		if input1[i] != input2[i] {
 			return false
 		}
 	}
@@ -285,18 +285,18 @@ func EqIntTest(a, b []int) bool {
 }
 
 // EqFloatTest : Test if two slices of floats are equal.
-func EqFloatTest(a, b []float64) bool {
+func EqFloatTest(input1, input2 []float64) bool {
 	// If one is nil, the other must also be nil.
-	if (a == nil) != (b == nil) {
+	if (input1 == nil) != (input2 == nil) {
 		return false
 	}
 
-	if len(a) != len(b) {
+	if len(input1) != len(input2) {
 		return false
 	}
 
-	for i := range a {
-		if a[i] != b[i] {
+	for i := range input1 {
+		if input1[i] != input2[i] {
 			return false
 		}
 	}
