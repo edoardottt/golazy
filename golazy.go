@@ -30,6 +30,10 @@ import (
 	"strings"
 )
 
+const (
+	Permission0644 = 0644
+)
+
 // Version returns the version as string.
 func Version() string {
 	return "0.1-dev"
@@ -56,12 +60,14 @@ func ScanInputStdin() []string {
 func RemoveDuplicateStrings(strSlice []string) []string {
 	keys := make(map[string]bool)
 	list := []string{}
+
 	for _, entry := range strSlice {
 		if _, value := keys[entry]; !value {
 			keys[entry] = true
 			list = append(list, entry)
 		}
 	}
+
 	return list
 }
 
@@ -70,6 +76,7 @@ func RemoveDuplicateStrings(strSlice []string) []string {
 func RemoveDuplicateInts(intSlice []int) []int {
 	keys := make(map[int]bool)
 	list := []int{}
+
 	for _, entry := range intSlice {
 		if _, value := keys[entry]; !value {
 			keys[entry] = true
@@ -85,6 +92,7 @@ func RemoveDuplicateInts(intSlice []int) []int {
 func RemoveDuplicateFloats(floatSlice []float64) []float64 {
 	keys := make(map[float64]bool)
 	list := []float64{}
+
 	for _, entry := range floatSlice {
 		if _, value := keys[entry]; !value {
 			keys[entry] = true
@@ -98,13 +106,15 @@ func RemoveDuplicateFloats(floatSlice []float64) []float64 {
 // AppendOutputToTxt tries to append the output string in the file `filename`
 // taken as input.
 func AppendOutputToTxt(output string, filename string) {
-	file, err := os.OpenFile(filename, os.O_APPEND|os.O_WRONLY, 0644)
+	file, err := os.OpenFile(filename, os.O_APPEND|os.O_WRONLY, Permission0644)
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	if _, err := file.WriteString(output + "\n"); err != nil {
 		log.Fatal(err)
 	}
+
 	file.Close()
 }
 
@@ -112,15 +122,17 @@ func AppendOutputToTxt(output string, filename string) {
 // taken as input.
 // ---> If it encounters an error, it logs the error and exits !!!!
 func AppendOutputToTxtAndExit(output string, filename string) {
-	file, err := os.OpenFile(filename, os.O_APPEND|os.O_WRONLY, 0644)
+	file, err := os.OpenFile(filename, os.O_APPEND|os.O_WRONLY, Permission0644)
 	if err != nil {
 		log.Fatal(err)
 		os.Exit(1)
 	}
+
 	if _, err := file.WriteString(output + "\n"); err != nil {
 		log.Fatal(err)
 		os.Exit(1)
 	}
+
 	file.Close()
 }
 
@@ -167,6 +179,7 @@ func RemoveProtocol(input string) string {
 	if res >= 0 {
 		return input[res+3:]
 	}
+
 	return input
 }
 
@@ -177,6 +190,7 @@ func RemovePort(input string) string {
 	if res >= 0 {
 		return input[:res]
 	}
+
 	return input
 }
 
@@ -186,13 +200,16 @@ func SameDomain(url1 string, url2 string) bool {
 	if err != nil {
 		return false
 	}
+
 	u2, err := url.Parse(url2)
 	if err != nil {
 		return false
 	}
+
 	if u1.Host == "" || u2.Host == "" {
 		return false
 	}
+
 	return u1.Host == u2.Host
 }
 
@@ -203,6 +220,7 @@ func GetPath(input string) (string, error) {
 	if err != nil {
 		return "", err
 	}
+
 	return u.Path, nil
 }
 
@@ -210,18 +228,24 @@ func GetPath(input string) (string, error) {
 // and returns a slice of strings (duplicates allowed).
 func ReadFileLineByLine(inputFile string) []string {
 	var text []string
+
 	file, err := os.Open(inputFile)
+
 	if err != nil {
 		log.Fatalf("failed to open %s ", inputFile)
 	}
+
 	scanner := bufio.NewScanner(file)
 	scanner.Split(bufio.ScanLines)
+
 	for scanner.Scan() {
 		dir := scanner.Text()
 		if len(dir) > 0 {
 			text = append(text, dir)
 		}
 	}
+
 	file.Close()
+
 	return text
 }
