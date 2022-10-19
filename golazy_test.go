@@ -143,7 +143,7 @@ func TestHasProtocol(t *testing.T) {
 		{"", false},
 		{"http://ciao.com", true},
 		{"https://google.com", true},
-		{"http:google.com", false},
+		{"http:google.com", true},
 		{"http//google.com", false},
 		{"//google.com", false},
 	}

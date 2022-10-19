@@ -62,7 +62,7 @@ func RemoveDuplicateStrings(strSlice []string) []string {
 	list := []string{}
 
 	for _, entry := range strSlice {
-		if _, value := keys[entry]; !value {
+		if ok := keys[entry]; !ok {
 			keys[entry] = true
 			list = append(list, entry)
 		}
@@ -78,7 +78,7 @@ func RemoveDuplicateInts(intSlice []int) []int {
 	list := []int{}
 
 	for _, entry := range intSlice {
-		if _, value := keys[entry]; !value {
+		if ok := keys[entry]; !ok {
 			keys[entry] = true
 			list = append(list, entry)
 		}
@@ -94,7 +94,7 @@ func RemoveDuplicateFloats(floatSlice []float64) []float64 {
 	list := []float64{}
 
 	for _, entry := range floatSlice {
-		if _, value := keys[entry]; !value {
+		if ok := keys[entry]; !ok {
 			keys[entry] = true
 			list = append(list, entry)
 		}
@@ -166,18 +166,23 @@ func GetProtocol(input string) (string, error) {
 // checks if it has a protocol ( like in a
 // URI/URL).
 func HasProtocol(input string) bool {
-	res := strings.Index(input, "://")
+	u, err := url.Parse(input)
+	if err != nil {
+		return false
+	}
 
-	return res >= 0
+	return u.Scheme != ""
 }
 
 // RemoveProtocol removes the protocol from
 // the input string (something://...)
 // If it's not present it returns the input.
 func RemoveProtocol(input string) string {
-	res := strings.Index(input, "://")
-	if res >= 0 {
-		return input[res+3:]
+	if HasProtocol(input) {
+		res := strings.Index(input, "://")
+		if res >= 0 {
+			return input[res+3:]
+		}
 	}
 
 	return input
