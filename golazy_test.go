@@ -43,48 +43,8 @@ func TestRemoveDuplicateStrings(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		if output := golazy.RemoveDuplicateStrings(test.input); !EqStringTest(test.expected, output) {
+		if output := golazy.RemoveDuplicateValues(test.input); !EqStringTest(test.expected, output) {
 			errorString := fmt.Sprintf("Test Failed: %s inputted, %v expected, received: %v",
-				test.input, test.expected, output)
-			t.Error(errorString)
-		}
-	}
-}
-
-func TestRemoveDuplicateInts(t *testing.T) {
-	var tests = []struct {
-		input    []int
-		expected []int
-	}{
-		{[]int{}, []int{}},
-		{[]int{1, 2, 3}, []int{1, 2, 3}},
-		{[]int{1, 2, 3, 1, 2, 3, 1, 2, 3}, []int{1, 2, 3}},
-		{[]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0}, []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 0}},
-	}
-
-	for _, test := range tests {
-		if output := golazy.RemoveDuplicateInts(test.input); !EqIntTest(test.expected, output) {
-			errorString := fmt.Sprintf("Test Failed: %d inputted, %v expected, received: %v",
-				test.input, test.expected, output)
-			t.Error(errorString)
-		}
-	}
-}
-
-func TestRemoveDuplicateFloats(t *testing.T) {
-	var tests = []struct {
-		input    []float64
-		expected []float64
-	}{
-		{[]float64{}, []float64{}},
-		{[]float64{1.1, 2.2, 3.3}, []float64{1.1, 2.2, 3.3}},
-		{[]float64{1, 2, 3, 1, 2, 3, 1, 2, 3}, []float64{1, 2, 3}},
-		{[]float64{1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0}, []float64{1, 2, 3, 4, 5, 6, 7, 8, 9, 0}},
-	}
-
-	for _, test := range tests {
-		if output := golazy.RemoveDuplicateFloats(test.input); !EqFloatTest(test.expected, output) {
-			errorString := fmt.Sprintf("Test Failed: %f inputted, %v expected, received: %v",
 				test.input, test.expected, output)
 			t.Error(errorString)
 		}

@@ -55,45 +55,13 @@ func ScanInputStdin() []string {
 	return result
 }
 
-// RemoveDuplicateStrings removes duplicates from a slice of
-// strings taken as input and returns the result.
-func RemoveDuplicateStrings(strSlice []string) []string {
-	keys := make(map[string]bool)
-	list := []string{}
+// RemoveDuplicateValues removes duplicates from a slice of
+// T taken as input and returns the result.
+func RemoveDuplicateValues[T comparable](slice []T) []T {
+	keys := make(map[T]bool)
+	list := []T{}
 
-	for _, entry := range strSlice {
-		if ok := keys[entry]; !ok {
-			keys[entry] = true
-			list = append(list, entry)
-		}
-	}
-
-	return list
-}
-
-// RemoveDuplicateInts removes duplicates from a slice of
-// integers taken as input and returns the result.
-func RemoveDuplicateInts(intSlice []int) []int {
-	keys := make(map[int]bool)
-	list := []int{}
-
-	for _, entry := range intSlice {
-		if ok := keys[entry]; !ok {
-			keys[entry] = true
-			list = append(list, entry)
-		}
-	}
-
-	return list
-}
-
-// RemoveDuplicateFloats removes duplicates from a slice of
-// floats taken as input and returns the result.
-func RemoveDuplicateFloats(floatSlice []float64) []float64 {
-	keys := make(map[float64]bool)
-	list := []float64{}
-
-	for _, entry := range floatSlice {
+	for _, entry := range slice {
 		if ok := keys[entry]; !ok {
 			keys[entry] = true
 			list = append(list, entry)
