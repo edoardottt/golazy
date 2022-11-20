@@ -204,6 +204,13 @@ func TestGetPath(t *testing.T) {
 	}
 }
 
+func TestGenerateRandomUserAgent(t *testing.T) {
+	output := golazy.GenerateRandomUserAgent()
+	if output == "" {
+		t.Error("empty UA")
+	}
+}
+
 // EqStringTest : Test if two slices of strings are equal.
 func EqStringTest(input1, input2 []string) bool {
 	// If one is nil, the other must also be nil.
