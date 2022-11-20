@@ -30,6 +30,7 @@ go get github.com/edoardottt/golazy
 | [SameDomain(url1 string, url2 string) bool](https://github.com/edoardottt/golazy/blob/main/golazy.go#L179) | It checks if two urls have the same domain |
 | [GetPath(input string) (string, error)](https://github.com/edoardottt/golazy/blob/main/golazy.go#L196) | It returns the path of the input string (if correctly URL-formatted) |
 | [ReadFileLineByLine(inputFile string) []string](https://github.com/edoardottt/golazy/blob/main/golazy.go#L206) | It reads from a file taken as input and returns a slice of strings (duplicates allowed). |
+| [GenerateRandomUserAgent() string](https://github.com/edoardottt/golazy/blob/main/golazy.go#L286) | It generates a Random User Agent. |
 
 <br>
 
