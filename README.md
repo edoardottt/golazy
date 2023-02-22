@@ -4,7 +4,7 @@
   <p align="center">Golang module exporting general purpose functions I get tired of rewriting every time</p>
 </p>
 <p align="center">
-<a href="https://edoardoottavianelli.it">
+<a href="https://github.com/edoardottt/golazy/actions">
 	<img src="https://github.com/edoardottt/golazy/actions/workflows/go.yml/badge.svg" alt="workflows" />
 </a>
 <a href="https://pkg.go.dev/github.com/edoardottt/golazy"><img src="https://pkg.go.dev/badge/github.com/edoardottt/golazy.svg" alt="Go Reference"></a>
