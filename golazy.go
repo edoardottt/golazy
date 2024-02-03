@@ -39,7 +39,7 @@ const (
 
 // Version returns the version as string.
 func Version() string {
-	return "0.1-dev"
+	return "0.1.4"
 }
 
 // ScanInputStdin return the array of elements
