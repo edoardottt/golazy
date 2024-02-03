@@ -228,7 +228,9 @@ func ReadFileLineByLine(inputFile string) []string {
 
 // genOsString generates a random OS string for a User Agent.
 func genOsString() string {
-	rand.Seed(time.Now().UnixNano())
+	source := rand.NewSource(time.Now().UnixNano())
+	rng := rand.New(source)
+
 	// Operating system.
 	var OsStrings = []string{
 		"Macintosh; Intel Mac OS X 10_10",
@@ -239,43 +241,68 @@ func genOsString() string {
 		"X11; Linux x86_64",
 	}
 
-	return OsStrings[rand.Intn(len(OsStrings))]
+	return OsStrings[rng.Intn(len(OsStrings))]
 }
 
 // genFirefoxUA generates a random Firefox User Agent.
 func genFirefoxUA() string {
-	rand.Seed(time.Now().UnixNano())
+	source := rand.NewSource(time.Now().UnixNano())
+	rng := rand.New(source)
 
 	// Firefox versions.
 	var FirefoxVersions = []float32{
-		58.0,
-		57.0,
-		56.0,
-		52.0,
-		48.0,
-		40.0,
-		35.0,
+		122.0,
+		121.0,
+		120.0,
+		119.0,
+		118.0,
+		117.0,
+		116.0,
+		115.0,
+		114.0,
+		113.0,
+		112.0,
+		111.0,
+		110.0,
+		109.0,
+		108.0,
+		107.0,
+		106.0,
 	}
 
-	version := FirefoxVersions[rand.Intn(len(FirefoxVersions))]
+	version := FirefoxVersions[rng.Intn(len(FirefoxVersions))]
 
 	return fmt.Sprintf("Mozilla/5.0 (%s; rv:%.1f) Gecko/20100101 Firefox/%.1f", genOsString(), version, version)
 }
 
 // genChromeUA generates a random Chrome User Agent.
 func genChromeUA() string {
-	rand.Seed(time.Now().UnixNano())
+	source := rand.NewSource(time.Now().UnixNano())
+	rng := rand.New(source)
 
 	// Chrome versions.
 	var ChromeVersions = []string{
-		"65.0.3325.146",
-		"64.0.3282.0",
-		"41.0.2228.0",
-		"40.0.2214.93",
-		"37.0.2062.124",
+		"107.0.5304",
+		"106.0.5249",
+		"105.0.5195",
+		"104.0.5112",
+		"103.0.5060",
+		"102.0.5005",
+		"101.0.4951",
+		"100.0.4896",
+		"99.0.4844",
+		"98.0.4758",
+		"97.0.4692",
+		"96.0.4664",
+		"95.0.4638",
+		"94.0.4606",
+		"93.0.4577",
+		"92.0.4515",
+		"91.0.4472",
+		"90.0.4430",
 	}
 
-	version := ChromeVersions[rand.Intn(len(ChromeVersions))]
+	version := ChromeVersions[rng.Intn(len(ChromeVersions))]
 
 	return fmt.Sprintf("Mozilla/5.0 (%s) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/%s Safari/537.36",
 		genOsString(), version)
@@ -284,9 +311,10 @@ func genChromeUA() string {
 // GenerateRandomUserAgent generates a random user agent
 // (can be Chrome or Firefox).
 func GenerateRandomUserAgent() string {
-	rand.Seed(time.Now().UnixNano())
+	source := rand.NewSource(time.Now().UnixNano())
+	rng := rand.New(source)
 
-	decision := rand.Intn(100)
+	decision := rng.Intn(100)
 
 	var ua string
 	if decision%2 == 0 {
