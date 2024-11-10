@@ -13,7 +13,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see http://www.gnu.org/licenses/.
 	@Repository:  https://github.com/edoardottt/golazy
-	@Author:      edoardottt, https://www.edoardoottavianelli.it
+	@Author:      edoardottt, https://www.edoardottt.com
 */
 
 package golazy_test
